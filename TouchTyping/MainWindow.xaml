@@ -127,6 +127,17 @@
                 <Button x:Name="btnM" Content="M" Grid.Column="7" Style="{StaticResource keyButton}" Background="{x:Null}" />
             </Grid>
         </Grid>
+        <Label x:Name="labTip" Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="ExtraBold" FontFamily="Gabriola">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4AB3C3" Offset="0"/>
+                    <GradientStop Color="#FFBF1589" Offset="0.988"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+            <!--<Label.Triggers>
+                <EventTrigger RoutedEvent=""
+            </Label.Triggers>-->
+        </Label>
 
     </Grid>
 </Window>

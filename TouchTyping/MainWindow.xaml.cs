@@ -31,8 +31,12 @@ namespace TouchTyping
             pressBruch = this.FindResource("keyPressColor") as LinearGradientBrush;
             fontSizeAnimation.From = 20;
             fontSizeAnimation.To = 80;
-            fontSizeAnimation.Duration = TimeSpan.FromSeconds(0.7);
+            fontSizeAnimation.Duration = TimeSpan.FromSeconds(1);
             fontSizeAnimation.Completed += fontSizeAnimation_Completed;
+            //fontSizeAnimation.AutoReverse = true;
+            //fontSizeAnimation.SpeedRatio = 2;
+            fontSizeAnimation.AccelerationRatio = 0.3;
+            fontSizeAnimation.DecelerationRatio = 0.3;
 
             closeAnimation.To = 0;
             closeAnimation.Duration = TimeSpan.FromMilliseconds(800);
@@ -42,7 +46,7 @@ namespace TouchTyping
             moveAnimation.From = 0;
             moveAnimation.To = this.canMoveArea.ActualWidth;
             moveAnimation.RepeatBehavior = RepeatBehavior.Forever;
-            moveAnimation.Duration = TimeSpan.FromSeconds(2);
+            moveAnimation.Duration = TimeSpan.FromSeconds(5);
             //this.btnTest.BeginAnimation();
         }
 

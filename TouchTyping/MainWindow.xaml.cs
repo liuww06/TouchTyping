@@ -23,6 +23,8 @@ namespace TouchTyping
     {
         LinearGradientBrush pressBruch;
         DoubleAnimation fontSizeAnimation = new DoubleAnimation();
+        DoubleAnimation closeAnimation = new DoubleAnimation();
+        DoubleAnimation moveAnimation = new DoubleAnimation();
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +33,22 @@ namespace TouchTyping
             fontSizeAnimation.To = 80;
             fontSizeAnimation.Duration = TimeSpan.FromSeconds(0.7);
             fontSizeAnimation.Completed += fontSizeAnimation_Completed;
+
+            closeAnimation.To = 0;
+            closeAnimation.Duration = TimeSpan.FromMilliseconds(800);
+            closeAnimation.Completed += closeAnimation_Completed;
+
+
+            moveAnimation.From = 0;
+            moveAnimation.To = this.canMoveArea.ActualWidth;
+            moveAnimation.RepeatBehavior = RepeatBehavior.Forever;
+            moveAnimation.Duration = TimeSpan.FromSeconds(2);
+            //this.btnTest.BeginAnimation();
+        }
+
+        void closeAnimation_Completed(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         void fontSizeAnimation_Completed(object sender, EventArgs e)
@@ -56,6 +74,15 @@ namespace TouchTyping
             {
                 btn.Background = null;
             }
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.BeginAnimation(Window.HeightProperty, closeAnimation);
+        }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }
